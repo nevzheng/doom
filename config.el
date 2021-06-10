@@ -16,9 +16,9 @@
                                                (kbd "g <down>")  'centaur-tabs-forward-group
                                                (kbd "g <up>")    'centaur-tabs-backward-group)
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-nord)
 
-(setq doom-font (font-spec :family "Fira Code" :size 13)
+(setq doom-font (font-spec :family "Fira Code" :size 12)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 13)
       doom-big-font (font-spec :family "Fira Code" :size 24))
 (after! doom-themes
@@ -46,14 +46,17 @@
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-directory "~/org/"
-        org-agenda-files '("~/org/agenda")
+        org-agenda-files (directory-files-recursively "~/org/agenda" "\\.org$")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-log-done 'note ;; Adds a Note and time stamp
         org-log-done 'time ;; Adds just a time stamp
         org-hide-emphasis-markers t))
+
 ;; Capture Templates
 (after! org (setq org-capture-templates
-    '(("t" "Todo" entry (file "~/org/agenda/Refile.org")
+    '(("a" "Agenda Todo" entry (file "~/org/agenda/Refile.org")
+       "\n\n** TODO %?\nSCHEDULED: <%(org-read-date nil nil \"+1d\")>" :empty-lines 1)
+       ("t" "Todo" entry (file "~/org/agenda/Refile.org")
        "* TODO %?\n%U" :empty-lines 1)
       ("T" "Todo with Clipboard" entry (file "~/org/agenda/Refile.org")
        "* TODO %?\n%U\n   %c" :empty-lines 1)
