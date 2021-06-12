@@ -24,6 +24,9 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy
+         +fuzzy
+         +prescient
+         +icons
          +childframe
          +fonts
          )               ; a search engine for love and life
