@@ -54,4 +54,6 @@
 (package! emojify)
 (package! flycheck-aspell)
 (package! ivy-posframe)
+(package! kubernetes)
+(package! kubernetes-evil)
 (package! org-bullets)

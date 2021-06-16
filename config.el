@@ -109,3 +109,15 @@
       (:prefix ("v" . "Ivy")
        :desc "Ivy push view" "v p" #'ivy-push-view
        :desc "Ivy switch view" "v s" #'ivy-switch-view))
+
+(use-package kubernetes
+  :ensure t
+  :commands (kubernetes-overview))
+(use-package kubernetes-evil
+  :ensure t
+  :after kubernetes)
+
+(map! :leader
+      (:prefix ("k" . "Kubernetes")
+       :desc "Kubernetes overview" "k k" #'kubernetes-overview
+       ))

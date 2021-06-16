@@ -18,6 +18,7 @@
 - [[#ivy][IVY]]
   - [[#ivy-posframe][IVY-POSFRAME]]
   - [[#ivy-keybindings][IVY KEYBINDINGS]]
+  - [[#kubernetes-config][Kubernetes Config]]
 
 * About This Config
 This is my personal Doom Emacs config. Doom Emacs is a distribution of Emacs that uses the "evil" / vim keybindings and includes several nice extensions and some default configuration
@@ -221,4 +222,17 @@ By default, Doom Emacs does not use 'SPC v', so the format I use for these bindi
        :desc "Ivy switch view" "v s" #'ivy-switch-view))
 #+END_SRC
 
+** Kubernetes Config
+#+BEGIN_SRC emacs-lisp
+(use-package kubernetes
+  :ensure t
+  :commands (kubernetes-overview))
+(use-package kubernetes-evil
+  :ensure t
+  :after kubernetes)
 
+(map! :leader
+      (:prefix ("k" . "Kubernetes")
+       :desc "Kubernetes overview" "k" #'kubernetes-overview
+       ))
+#+END_SRC
